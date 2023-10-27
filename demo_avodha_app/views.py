@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from . forms import ModeForm
 
 from .models import shop
 
@@ -20,5 +20,12 @@ def add_product(request):
         s=shop(name=name,desc=desc,price=price)
         s.save()
         print('prooduct_added')
-
     return render(request,"add_product.html")
+
+def update(request,id):
+    obj=shop.objects.get(id=id)
+    form = ModeForm(request.POST or None,request.FILES,instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    return render(request,'edit.html',{'form':form,'obj':obj})
