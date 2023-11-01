@@ -1,3 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% for prod in products %}
-<a href="{% url 'myapp:detail' prod.id %}">{{prod.name}}</a>
+<div style="display: flex">
+  <a href="{% url 'myapp:detail' prod.id %}">{{prod.name}}=></a>
+</div>
 {% endfor %} {% endblock %}
