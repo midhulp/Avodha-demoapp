@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <a href="{% url 'myapp:update' prod.id %}">update</a>
+<a class="btn btn-warning" href="{% url 'myapp:delete' prod.id %}">Delete</a>
+
 <h1>{{prod.desc}}</h1>
 <img src="{{prod.img.url}}" alt="" style="height: 200px; width: 200px" />
 {% endblock %}

@@ -17,9 +17,9 @@ def add_product(request):
         name=request.POST.get('name')
         desc=request.POST.get('desc')
         price=request.POST.get('price')
-        s=shop(name=name,desc=desc,price=price)
+        img=request.FILES['img']
+        s=shop(name=name,desc=desc,price=price,img=img)
         s.save()
-        print('prooduct_added')
     return render(request,"add_product.html")
 
 def update(request,id):
@@ -29,3 +29,13 @@ def update(request,id):
         form.save()
         return redirect('/')
     return render(request,'edit.html',{'form':form,'obj':obj})
+
+def delete(request,id):
+    if request.method=='POST':
+        obj=shop.objects.get(id=id)
+        obj.delete()
+        return redirect('/')
+    return render(request,'delete.html')
+
+
+

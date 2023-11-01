@@ -1,7 +1,8 @@
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <input type="text" name="name" placeholder="prod name" /><br />
   <input type="text" name="desc" placeholder="prod desc" /><br />
   <input type="text" name="price" placeholder="prod price" /><br />
+  <input type="file" name="img" placeholder="prod img" /><br />
   <input type="submit" value="ADD" />
 </form>
